@@ -1,6 +1,7 @@
 #include <iostream>
 #include <utility>
 #include <tuple>
+#include <string>
 enum class Color{
     White,
     Red,
@@ -29,6 +30,21 @@ int main(){
     std::cout <<std::get<1>(t)<<"\n";
     std::cout <<std::get<2>(t).x<<"\n";
     std::get<2>(t).color=Color::Red;
+    std::pair<std::string,int> pq={"Hello",42};
+    auto[word,freq]=pq;
+    std::cout<<word<<"\n"<<freq<<"\n";
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
