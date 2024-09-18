@@ -25,6 +25,7 @@ int main(){
     std::cout<<sizeof(Color)<<"\n";
     std::pair <double,int> p={42,3.14};
     std::cout<<p.first<<"\n";//для вывода первой части пары
+    std::cout<<p.second<<"\n";
     std::tuple<int,double,Point> t={42,3.14,{.color=Color::Orange}};
     std::cout <<std::get<0>(t)<<"\n";
     std::cout <<std::get<1>(t)<<"\n";
