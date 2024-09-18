@@ -1,4 +1,6 @@
 #include <iostream>
+#include <utility>
+#include <tuple>
 enum class Color{
     White,
     Red,
@@ -20,8 +22,13 @@ int main(){
     std::cout<<sizeof(point1)<<"\n";
     std::cout<<sizeof(double)<<"\n";
     std::cout<<sizeof(Color)<<"\n";
-
-    
+    std::pair <double,int> p={42,3.14};
+    std::cout<<p.first;//для вывода первой части пары
+    std::tuple<int,double,Point> t={42,3.14,{.color=Color::Orange}};
+    std::cout <<std::get<0>(t)<<"\n";
+    std::cout <<std::get<1>(t)<<"\n";
+    std::cout <<std::get<2>(t).x<<"\n";
+    std::get<2>(t).color=Color::Red;
     
     
     
