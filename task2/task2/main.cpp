@@ -1,47 +1,39 @@
-/*#include <iostream>
+#include <iostream>
 #include <vector>
-void swap(int &a, int &b) {
-    int c = a;
-    a = b;
-    b = c;
-}
 
 int main() {
-
-    size_t length = 3;
+    size_t length = 4;
     size_t width = 3;
-    std::vector<int> column(width, 0);
-    std::vector<std::vector<int>> matrix(length, column);
-    std::vector<std::vector<int>> matrix_mod(length, column);
-    for(int f = 0; f <length; f++) {
-        for(int j = 0;j< width; j++) {
-            std::cin >> matrix[f][j];
-        }
-    }
- for (int i = 0; i < length; i++) {
-     for (int j = 0; j < width; j++) {
-         matrix_mod[i][j]=matrix[i][j];
-     }
-     
-   
- }
 
+    std::cout << "Введите матрицу размером " << width << " на " << length << "\n";
 
-   for (int k = 0; k < length; k++) {
-        for (int j = k + 1; j < width; j++) {
-            swap(matrix_mod[k][j], matrix_mod[j][k]);
+    std::vector<std::vector<int>> matrix(width, std::vector<int>(length));
+    std::vector<std::vector<int>> matrix_mod(length, std::vector<int>(width));
+
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < length; ++j) {
+            std::cin >> matrix[i][j];
         }
     }
 
 
-    for (int i = 0; i < length; i++) {
-        for (int j = 0; j < width; j++) {
+
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < length; ++j) {
+            matrix_mod[j][i] = matrix[i][j];
+        }
+    }
+
+
+    std::cout << "\nМатрица после транспонирования:\n";
+    for (int i = 0; i < length; ++i) {
+        for (int j = 0; j < width; ++j) {
             std::cout << matrix_mod[i][j] << "  ";
         }
-        std::cout<<"\n";
-      
+        std::cout << "\n";
     }
 
+    std::cout << "Размер стал " << length << " на " << width << "\n";
     return 0;
-}*/
- 
+}
+
