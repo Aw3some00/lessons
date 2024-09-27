@@ -3,7 +3,11 @@
 #include <list>//для обычного листа
 #include <iterator>//для итератора
 #include <forward_list>//для передних листов
-#include <map>//для словаря
+#include <unordered_map>//для словаря
+#include <algorithm>
+#include <tuple>
+#include <string>
+#include <vector>
 int main() {
     /* std::deque<int> d{1,2,3,4};
      d.push_back(5);
@@ -127,16 +131,23 @@ int main() {
      std::cout<<"not found"<<"\n";*/
     //data.insert({key,value})
     //data.insert_or_assign({key,value})
-    std::map<std::string,int>freqs;
+    std::unordered_map<std::string,int>freqs;
+    freqs.reserve(300000);
     std::string word;
     size_t counter=0;
 
     while(std::cin>>word){
         ++freqs[word];
     }
-        for(const auto&[word,freq]:freqs){
+    std::vector<std::pair<std::string,int>> sortedByFreq(freqs.begin(),freqs.end());
+    std::sort(sortedByFreq.begin(),sortedByFreq.end(),[](const auto& p1,const auto& p2){
+        return std::tie(p2.second,p1.first)<std::tie(p1.second,p2.first);
+    
+    });
+    
+   for(const auto&[word,freq]:sortedByFreq){
             
-            std::cout<<word<<"\t"<<freq<<"\n";
+            std::cout<<counter<<"\t"<<word<<"\t"<<freq<<"\n";
             counter++;
         }
     std::cout<<"число слов: "<<counter<<"\n";
